@@ -57,4 +57,4 @@ pairProgramming.play(redBeltNinja);
 console.log(redBeltNinja);
 
 redBeltNinja.attack(blackBeltNinja);
-console.log(blackBeltNinja);
+console.log(blackBeltNinja)
