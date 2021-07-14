@@ -1,4 +1,4 @@
-import React ,{Component} from 'react';
+import React  from 'react';
 
 class PersonCard extends React.Component {
     
