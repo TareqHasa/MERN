@@ -1,0 +1,280 @@
+1
+> use my_first_db
+switched to db my_first_db
+
+2
+> db.createCollection("students")
+{ "ok" : 1 }
+
+3
+> db.students.insert({name:"Tareq",home_state:"Nablus",lucky_number:10,birthday:{month:10,day:28,year:1993}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name:"Wadee",home_state:"Nablus",lucky_number:15,birthday:{month:12,day:3,year:1993}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name:"Layth",home_state:"Jenin",lucky_number:9,birthday:{month:19,day:3,year:1998}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name:"Ibraheem",home_state:"Ramllah",lucky_number:7,birthday:{month:9,day:8,year:1988}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name:"Hitham",home_state:"Ramllah",lucky_number:0,birthday:{month:5,day:8,year:1998}})
+WriteResult({ "nInserted" : 1 })
+
+4
+> db.students.find().pretty()
+{
+        "_id" : ObjectId("61013752dd1f3d95878b17f0"),
+        "name" : "Tareq",
+        "home_state" : "Nablus",
+        "lucky_number" : 10,
+        "birthday" : {
+                "month" : 10,
+                "day" : 28,
+                "year" : 1993
+        }
+}
+{
+        "_id" : ObjectId("6101378bdd1f3d95878b17f1"),
+        "name" : "Wadee",
+        "home_state" : "Nablus",
+        "lucky_number" : 15,
+        "birthday" : {
+                "month" : 12,
+                "day" : 3,
+                "year" : 1993
+        }
+}
+{
+        "_id" : ObjectId("61013871dd1f3d95878b17f2"),
+        "name" : "Layth",
+        "home_state" : "Jenin",
+        "lucky_number" : 9,
+        "birthday" : {
+                "month" : 19,
+                "day" : 3,
+                "year" : 1998
+        }
+}
+{
+        "_id" : ObjectId("610138acdd1f3d95878b17f3"),
+        "name" : "Ibraheem",
+        "home_state" : "Ramllah",
+        "lucky_number" : 7,
+        "birthday" : {
+                "month" : 9,
+                "day" : 8,
+                "year" : 1988
+        }
+}
+{
+        "_id" : ObjectId("610138dcdd1f3d95878b17f4"),
+        "name" : "Hitham",
+        "home_state" : "Ramllah",
+        "lucky_number" : 0,
+        "birthday" : {
+                "month" : 5,
+                "day" : 8,
+                "year" : 1998
+        }
+}
+>
+
+5
+> db.students.find({$or:[{home_state:"Nablus"},{home_state:"Jenin"}]}).pretty()
+{
+        "_id" : ObjectId("61013752dd1f3d95878b17f0"),
+        "name" : "Tareq",
+        "home_state" : "Nablus",
+        "lucky_number" : 10,
+        "birthday" : {
+                "month" : 10,
+                "day" : 28,
+                "year" : 1993
+        }
+}
+{
+        "_id" : ObjectId("6101378bdd1f3d95878b17f1"),
+        "name" : "Wadee",
+        "home_state" : "Nablus",
+        "lucky_number" : 15,
+        "birthday" : {
+                "month" : 12,
+                "day" : 3,
+                "year" : 1993
+        }
+}
+{
+        "_id" : ObjectId("61013871dd1f3d95878b17f2"),
+        "name" : "Layth",
+        "home_state" : "Jenin",
+        "lucky_number" : 9,
+        "birthday" : {
+                "month" : 19,
+                "day" : 3,
+                "year" : 1998
+        }
+}
+>
+
+6
+> db.students.find({lucky_number:{$gt:3}}).pretty()
+{
+        "_id" : ObjectId("61013752dd1f3d95878b17f0"),
+        "name" : "Tareq",
+        "home_state" : "Nablus",
+        "lucky_number" : 10,
+        "birthday" : {
+                "month" : 10,
+                "day" : 28,
+                "year" : 1993
+        }
+}
+{
+        "_id" : ObjectId("6101378bdd1f3d95878b17f1"),
+        "name" : "Wadee",
+        "home_state" : "Nablus",
+        "lucky_number" : 15,
+        "birthday" : {
+                "month" : 12,
+                "day" : 3,
+                "year" : 1993
+        }
+}
+{
+        "_id" : ObjectId("61013871dd1f3d95878b17f2"),
+        "name" : "Layth",
+        "home_state" : "Jenin",
+        "lucky_number" : 9,
+        "birthday" : {
+                "month" : 19,
+                "day" : 3,
+                "year" : 1998
+        }
+}
+{
+        "_id" : ObjectId("610138acdd1f3d95878b17f3"),
+        "name" : "Ibraheem",
+        "home_state" : "Ramllah",
+        "lucky_number" : 7,
+        "birthday" : {
+                "month" : 9,
+                "day" : 8,
+                "year" : 1988
+        }
+}
+>
+
+
+7
+> db.students.find({lucky_number:{$lte:10}}).pretty()
+{
+        "_id" : ObjectId("61013752dd1f3d95878b17f0"),
+        "name" : "Tareq",
+        "home_state" : "Nablus",
+        "lucky_number" : 10,
+        "birthday" : {
+                "month" : 10,
+                "day" : 28,
+                "year" : 1993
+        }
+}
+{
+        "_id" : ObjectId("61013871dd1f3d95878b17f2"),
+        "name" : "Layth",
+        "home_state" : "Jenin",
+        "lucky_number" : 9,
+        "birthday" : {
+                "month" : 19,
+                "day" : 3,
+                "year" : 1998
+        }
+}
+{
+        "_id" : ObjectId("610138acdd1f3d95878b17f3"),
+        "name" : "Ibraheem",
+        "home_state" : "Ramllah",
+        "lucky_number" : 7,
+        "birthday" : {
+                "month" : 9,
+                "day" : 8,
+                "year" : 1988
+        }
+}
+{
+        "_id" : ObjectId("610138dcdd1f3d95878b17f4"),
+        "name" : "Hitham",
+        "home_state" : "Ramllah",
+        "lucky_number" : 0,
+        "birthday" : {
+                "month" : 5,
+                "day" : 8,
+                "year" : 1998
+        }
+}
+>
+
+8
+> db.students.find({$and:[{lucky_number:{$gte:1}},{lucky_number:{$lte:9}}]}).pretty()
+{
+        "_id" : ObjectId("61013871dd1f3d95878b17f2"),
+        "name" : "Layth",
+        "home_state" : "Jenin",
+        "lucky_number" : 9,
+        "birthday" : {
+                "month" : 19,
+                "day" : 3,
+                "year" : 1998
+        }
+}
+{
+        "_id" : ObjectId("610138acdd1f3d95878b17f3"),
+        "name" : "Ibraheem",
+        "home_state" : "Ramllah",
+        "lucky_number" : 7,
+        "birthday" : {
+                "month" : 9,
+                "day" : 8,
+                "year" : 1988
+        }
+}
+>
+
+9
+> db.students.updateMany({},{$set:{interests:['coding', 'brunch', 'MongoDB']}})
+
+10
+> db.students.update({ "_id" : ObjectId("6101378bdd1f3d95878b17f1")},{$push:{interests:"python"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.students.update({ "_id" : ObjectId("61013871dd1f3d95878b17f2")},{$push:{interests:"reading"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+>
+
+11
+> db.students.update({ "_id" : ObjectId("61013871dd1f3d95878b17f2")},{$push:{interests:"taxes"}})
+
+12
+> db.students.update({ "_id" : ObjectId("61013871dd1f3d95878b17f2")},{$pull:{interests:"taxes"}})
+
+13
+> db.students.remove({home_state:"Nablus"})
+WriteResult({ "nRemoved" : 2 })
+
+14
+db.students.remove({name: "Tariq"})
+
+15
+db.students.remove({lucky_number: {$gt:5}}, true)
+
+16
+> db.students.updateMany({},{$set:{number_of_belts:0}})
+{ "acknowledged" : true, "matchedCount" : 2, "modifiedCount" : 2 }
+
+17
+> db.students.updateMany({},{$rename:{number_of_belts:"belts_earned"}})
+{ "acknowledged" : true, "matchedCount" : 2, "modifiedCount" : 2 }
+
+18
+> db.students.updateMany({},{$unset:{lucky_number:""}})
+{ "acknowledged" : true, "matchedCount" : 2, "modifiedCount" : 2 }
+
+19
+> db.students.updateMany({},{$set:{updated_on:Date()}})
+{ "acknowledged" : true, "matchedCount" : 2, "modifiedCount" : 2 }
