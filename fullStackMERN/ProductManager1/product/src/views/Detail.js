@@ -12,6 +12,9 @@ const Detail = ({ id }) => {
 
     return (
         <div>
+            <Link to={"/product/"}>
+                Products Page
+            </Link>
             <p>Title: {product.title}</p>
             <p>Price: {product.price}</p>
             <p>Description: {product.discription}</p>

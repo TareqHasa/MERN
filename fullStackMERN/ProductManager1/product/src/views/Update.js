@@ -21,7 +21,7 @@ const Update= (props) => {
             price
         })
             .then(res => console.log(res));
-            navigate("/product")
+            navigate(`/product/${id}`)
     }
     return (
         <div>
@@ -35,7 +35,7 @@ const Update= (props) => {
                     onChange={(e) => { setTitle(e.target.value) }} />
                 </p>
                 <p>
-                    <label>Last Name</label><br />
+                    <label>Price</label><br />
                     <input type="text" 
                     name="price"
                     value={price} 
