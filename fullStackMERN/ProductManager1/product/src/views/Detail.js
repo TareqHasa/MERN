@@ -8,7 +8,7 @@ const Detail = ({ id }) => {
             .then(request => setProduct(request.data))
         console.log(id)
         console.log(product)
-    }, [])
+    }, [product])
 
     return (
         <div>

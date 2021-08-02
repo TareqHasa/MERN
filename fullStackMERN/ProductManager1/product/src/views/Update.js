@@ -18,7 +18,8 @@ const Update= (props) => {
         e.preventDefault();
         axios.put('http://localhost:8000/api/product/' + id, {
             title,
-            price
+            price,
+            discription
         })
             .then(res => console.log(res));
             navigate(`/product/${id}`)
