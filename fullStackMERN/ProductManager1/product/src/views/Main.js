@@ -13,15 +13,22 @@ const Main= () => {
                 setLoaded(true);
                 console.log(loaded);
             });
-    },[product,loaded])
+    },[product])
 
     const removeFromDom = (productId) => {
         setProduct(product.filter(product => product._id !== productId));
     }
+    const createProduct = products => {
+        axios.post('http://localhost:8000/api/product', products)
+            .then(res=>{
+                setProduct([...product, res.data]);
+            })
+            
+    }
     return (
         <>
         <div>
-            <ProductForm/>
+            <ProductForm onSubmitProp={createProduct} initialTitle="" initialPrice="" initialDiscription=""/>
             <hr/>
             {loaded && <ProductList product={product} removeFromDom={removeFromDom}/>}
         </div>
